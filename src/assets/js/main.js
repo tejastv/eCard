@@ -8,9 +8,9 @@ $(window).load(function(){
 
 	//==============___Page Loader___================
   
-  $('#page-loader').delay(300).fadeOut(400, function(){
+  // $('#page-loader').delay(300).fadeOut(400, function(){
 
-  });
+  // });
 
   $('#loader-name').addClass('loader-left');
   $('#loader-job').addClass('loader-right');
