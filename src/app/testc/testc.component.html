@@ -43,12 +43,13 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input class="form-control required" style="height: 40px;" [(ngModel)]="number" name="number" placeholder="Contact Number" type="number"
-                                required />
+                            <input class="form-control required" style="height: 40px;" [(ngModel)]="number"
+                                name="number" placeholder="Contact Number" type="number" required />
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <button class="btn btn-default form-send" (click)="share();">Share via &nbsp; <i class="fa fa-whatsapp" aria-hidden="true"></i> </button>
+                        <button class="btn btn-default form-send" (click)="share();">Share via &nbsp; <i
+                                class="fa fa-whatsapp" aria-hidden="true"></i> </button>
                         <!-- <input type="submit" class="" value=""> -->
                     </div>
                 </div>
@@ -75,8 +76,8 @@
                 <!--/ Description Text -->
                 <!-- Description feature -->
                 <div class="blog-item-link" style="display: inline-block;margin: 0 10px 10px;">
-                    <a href="javascript:void(0)" (click)="shareDirect();"
-                        class="btn btn-default" target="blank"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                    <a href="javascript:void(0)" (click)="shareDirect();" class="btn btn-default" target="blank"><i
+                            class="fa fa-whatsapp" aria-hidden="true"></i>
                         Whatsapp</a>
                 </div>
 
@@ -358,191 +359,35 @@
                 <!-- Section title -->
                 <h2 class="section-title">Gallery</h2>
                 <!-- /Section title -->
-
+                <ul class="catcall">
+                    <li *ngFor="let cat of userObj?.gallary"
+                        [ngStyle]="{'border-bottom': activeClass == cat ? '2px solid #333333' : 'none'}" class="cat"
+                        (click)="filterCat(cat);">{{cat.media_desc}}</li>
+                </ul>
                 <!-- Projects list -->
                 <div class="projects-list">
 
                     <!-- item -->
-                    <div class="project-item">
-                        <!-- ==> Put your thumbnail as a background -->
-                        <a href="assets/img/portfolio/p1.jpg" class="project-thumbnail nivobox"
-                            data-lightbox-gallery="portfolio"
-                            style="background-image: url('assets/img/portfolio/thumb-p1.jpg');">
-                            <!-- project-description -->
+                    <div class="project-item" *ngFor="let cat of gallarires">
+                        <div *ngIf="cat.media_type == '0'" style="width: 100%;height: 250px;">
+                            <img [attr.src]="cat.image" style="width: 100%;height: 100%;" alt="company_image">
+                        </div>
+                        <!-- <a *ngIf="cat.media_type == 0" [attr.href]="sanitizer.bypassSecurityTrustResourceUrl(cat.image)"
+                            class="project-thumbnail nivobox" data-lightbox-gallery="portfolio"
+                           [style.background-image]="'url(cat.image)'">
                             <div class="project-description-wrapper">
                                 <div class="project-description">
-                                    <!-- project name -->
                                     <h2 class="project-title">Project Title</h2>
-                                    <!-- /project name -->
                                     <span class="see-more">Project Tags</span>
                                 </div>
                             </div>
-                            <!-- /project-description -->
-                        </a>
+                        </a> -->
+                        <div *ngIf="cat.media_type == '1'">
+                            <iframe width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(cat.video)"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
                     </div>
                     <!-- /item -->
-
-                    <!-- item -->
-                    <div class="project-item">
-                        <!-- ==> Put your thumbnail as a background -->
-                        <a href="assets/img/portfolio/p2.jpg" class="project-thumbnail nivobox"
-                            data-lightbox-gallery="portfolio"
-                            style="background-image: url('assets/img/portfolio/thumb-p2.jpg');">
-                            <!-- project-description -->
-                            <div class="project-description-wrapper">
-                                <div class="project-description">
-                                    <!-- project name -->
-                                    <h2 class="project-title">Project Title</h2>
-                                    <!-- /project name -->
-                                    <span class="see-more">Project Tags</span>
-                                </div>
-                            </div>
-                            <!-- /project-description -->
-                        </a>
-                    </div>
-                    <!-- /item -->
-
-                    <!-- item -->
-                    <div class="project-item">
-                        <!-- ==> Put your thumbnail as a background -->
-                        <a href="assets/img/portfolio/p3.jpg" class="project-thumbnail nivobox"
-                            data-lightbox-gallery="portfolio"
-                            style="background-image: url('assets/img/portfolio/thumb-p3.jpg');">
-                            <!-- project-description -->
-                            <div class="project-description-wrapper">
-                                <div class="project-description">
-                                    <!-- project name -->
-                                    <h2 class="project-title">Project Title</h2>
-                                    <!-- /project name -->
-                                    <span class="see-more">Project Tags</span>
-                                </div>
-                            </div>
-                            <!-- /project-description -->
-                        </a>
-                    </div>
-                    <!-- /item -->
-
-                    <!-- item -->
-                    <div class="project-item">
-                        <!-- ==> Put your thumbnail as a background -->
-                        <a href="assets/img/portfolio/p4.jpg" class="project-thumbnail nivobox"
-                            data-lightbox-gallery="portfolio"
-                            style="background-image: url('assets/img/portfolio/thumb-p4.jpg');">
-                            <!-- project-description -->
-                            <div class="project-description-wrapper">
-                                <div class="project-description">
-                                    <!-- project name -->
-                                    <h2 class="project-title">Project Title</h2>
-                                    <!-- /project name -->
-                                    <span class="see-more">Project Tags</span>
-                                </div>
-                            </div>
-                            <!-- /project-description -->
-                        </a>
-                    </div>
-                    <!-- /item -->
-
-                    <!-- item -->
-                    <div class="project-item">
-                        <!-- ==> Put your thumbnail as a background -->
-                        <a href="assets/img/portfolio/p5.jpg" class="project-thumbnail nivobox"
-                            data-lightbox-gallery="portfolio"
-                            style="background-image: url('assets/img/portfolio/thumb-p5.jpg');">
-                            <!-- project-description -->
-                            <div class="project-description-wrapper">
-                                <div class="project-description">
-                                    <!-- project name -->
-                                    <h2 class="project-title">Project Title</h2>
-                                    <!-- /project name -->
-                                    <span class="see-more">Project Tags</span>
-                                </div>
-                            </div>
-                            <!-- /project-description -->
-                        </a>
-                    </div>
-                    <!-- /item -->
-
-                    <!-- item -->
-                    <div class="project-item">
-                        <!-- ==> Put your thumbnail as a background -->
-                        <a href="assets/img/portfolio/p6.jpg" class="project-thumbnail nivobox"
-                            data-lightbox-gallery="portfolio"
-                            style="background-image: url('assets/img/portfolio/thumb-p6.jpg');">
-                            <!-- project-description -->
-                            <div class="project-description-wrapper">
-                                <div class="project-description">
-                                    <!-- project name -->
-                                    <h2 class="project-title">Project Title</h2>
-                                    <!-- /project name -->
-                                    <span class="see-more">Project Tags</span>
-                                </div>
-                            </div>
-                            <!-- /project-description -->
-                        </a>
-                    </div>
-                    <!-- /item -->
-
-                    <!-- item -->
-                    <div class="project-item">
-                        <!-- ==> Put your thumbnail as a background -->
-                        <a href="assets/img/portfolio/p7.jpg" class="project-thumbnail nivobox"
-                            data-lightbox-gallery="portfolio"
-                            style="background-image: url('assets/img/portfolio/thumb-p7.jpg');">
-                            <!-- project-description -->
-                            <div class="project-description-wrapper">
-                                <div class="project-description">
-                                    <!-- project name -->
-                                    <h2 class="project-title">Project Title</h2>
-                                    <!-- /project name -->
-                                    <span class="see-more">Project Tags</span>
-                                </div>
-                            </div>
-                            <!-- /project-description -->
-                        </a>
-                    </div>
-                    <!-- /item -->
-
-                    <!-- item -->
-                    <div class="project-item">
-                        <!-- ==> Put your thumbnail as a background -->
-                        <a href="assets/img/portfolio/p8.jpg" class="project-thumbnail nivobox"
-                            data-lightbox-gallery="portfolio"
-                            style="background-image: url('assets/img/portfolio/thumb-p8.jpg');">
-                            <!-- project-description -->
-                            <div class="project-description-wrapper">
-                                <div class="project-description">
-                                    <!-- project name -->
-                                    <h2 class="project-title">Project Title</h2>
-                                    <!-- /project name -->
-                                    <span class="see-more">Project Tags</span>
-                                </div>
-                            </div>
-                            <!-- /project-description -->
-                        </a>
-                    </div>
-                    <!-- /item -->
-
-                    <!-- item -->
-                    <div class="project-item">
-                        <!-- ==> Put your thumbnail as a background -->
-                        <a href="assets/img/portfolio/p9.jpg" class="project-thumbnail nivobox"
-                            data-lightbox-gallery="portfolio"
-                            style="background-image: url('assets/img/portfolio/thumb-p9.jpg');">
-                            <!-- project-description -->
-                            <div class="project-description-wrapper">
-                                <div class="project-description">
-                                    <!-- project name -->
-                                    <h2 class="project-title">Project Title</h2>
-                                    <!-- /project name -->
-                                    <span class="see-more">Project Tags</span>
-                                </div>
-                            </div>
-                            <!-- /project-description -->
-                        </a>
-                    </div>
-                    <!-- /item -->
-
-
                 </div>
                 <!-- /projects list -->
 
@@ -550,7 +395,7 @@
         </div>
         <!-- /SECTION: PORTFOLIO  -->
 
-     
+
 
         <!-- SECTION: CONTACT-->
         <div class="section-vcardbody section-page" id="page-contact">
